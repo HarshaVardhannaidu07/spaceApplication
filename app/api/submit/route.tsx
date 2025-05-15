@@ -1,42 +1,27 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { kv } from '@vercel/kv';
 
 export async function POST(request: Request) {
   try {
     const formData = await request.json();
 
-    // Ensure the 'data' directory exists
-    const dataDir = path.join(process.cwd(), 'data');
-    if (!fs.existsSync(dataDir)) {
-      fs.mkdirSync(dataDir, { recursive: true }); // Creates the directory if it doesn't exist
-    }
+    // Generate a unique ID for the submission
+    const submissionId = `submission:${Date.now()}`;
 
-    // Path to submissions.json
-    const filePath = path.join(dataDir, 'submissions.json');
-    
-    // Read existing data (or initialize empty array)
-    let submissions = [];
-    if (fs.existsSync(filePath)) {
-      const fileData = fs.readFileSync(filePath, 'utf8');
-      submissions = JSON.parse(fileData);
-    }
-    
-    // Add new submission
-    submissions.push({
+    // Store the form data in Redis
+    await kv.hset(submissionId, {
       ...formData,
       submittedAt: new Date().toISOString(),
-      id: Date.now().toString(),
     });
-    
-    // Write back to file
-    fs.writeFileSync(filePath, JSON.stringify(submissions, null, 2));
-    
-    return NextResponse.json({ success: true });
+
+    return NextResponse.json({ 
+      success: true,
+      message: "Form submitted successfully!",
+    });
   } catch (error) {
-    console.error('Error saving submission:', error);
+    console.error("Redis storage error:", error);
     return NextResponse.json(
-      { error: 'Failed to save submission' },
+      { error: "Failed to save submission" },
       { status: 500 }
     );
   }
