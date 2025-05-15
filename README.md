@@ -1,30 +1,58 @@
-# Multi stage form
+# 🚀 Mars Application Form – Next.js Project
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+This is a Next.js application for a Mars colonization application form, built with TypeScript, Tailwind CSS, and shadcn/ui components.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/harshas-projects-bf0e9731/v0-form-to-mars)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/JMAj49U6gAY)
+---
 
-## Overview
+## ⚙️ Setup Instructions (All Steps in One Go)
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+1. **Create the project** using the official Next.js starter:
 
-## Deployment
+    ```bash
+    npx create-next-app@latest mars-application-form
+    ```
 
-Your project is live at:
+    When prompted, select:
+    - **TypeScript**: Yes  
+    - **Tailwind CSS**: Yes  
+    - **App Router**: Yes  
 
-**[https://vercel.com/harshas-projects-bf0e9731/v0-form-to-mars](https://vercel.com/harshas-projects-bf0e9731/v0-form-to-mars)**
+2. **Navigate to the project folder**:
 
-## Build your app
+    ```bash
+    cd mars-application-form
+    ```
 
-Continue building your app on:
+3. **Install required dependencies**:
 
-**[https://v0.dev/chat/projects/JMAj49U6gAY](https://v0.dev/chat/projects/JMAj49U6gAY)**
+    ```bash
+    npm install lucide-react
+    ```
 
-## How It Works
+4. **Initialize shadcn/ui**:
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+    ```bash
+    npx shadcn@latest init
+    ```
+
+5. **Add necessary UI components**:
+
+    ```bash
+    npx shadcn@latest add button card input label radio-group select textarea
+    ```
+
+6. **Copy provided components** into the `components/` folder of your project.
+
+7. **Add a Mars surface image**:
+    - Make sure a `public/` folder exists in your project root.
+    - Add your Mars image (e.g., `mars-surface.jpg`) to that folder.
+
+8. **Start the development server**:
+
+    ```bash
+    npm run dev
+    ```
+
+    Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+-----
