@@ -1,4 +1,4 @@
-# 🚀 Mars Application Form – Next.js Project
+# 🚀 Space Application Form – Next.js Project
 
 This is a Next.js application for a Mars colonization application form, built with TypeScript, Tailwind CSS, and shadcn/ui components.
 
